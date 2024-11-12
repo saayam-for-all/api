@@ -1,0 +1,10 @@
+
+
+on: 
+  push: 
+    branches: [ "test" ]
+  pull-request: 
+    branches: [ "test" ]
+
+
+jobs: 
