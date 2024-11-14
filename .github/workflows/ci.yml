@@ -24,7 +24,7 @@ jobs:
         cache: 'npm'
 
     - name: Install Dependencies and Test
-      run: npm install
+      run: npm ci
       
     - run: npm run lint
 
