@@ -1,0 +1,12 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "This repository contains APIs to consume Saayam services. The APIs can be consumed using the Javascript SDK in this repo. See the [AWS API Gateway Client Library Documentation](https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-generate-sdk-javascript.html) for more details.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
