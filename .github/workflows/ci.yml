@@ -2,7 +2,7 @@ name: API CI Workflow
 on: 
   push: 
     branches: [ "CICDPipe" ]
-  pull-request: 
+  pull_request: 
     branches: [ "CICDPipe" ]
 
 
