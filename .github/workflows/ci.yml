@@ -1,1 +1,29 @@
+name: API CI Workflow
+on: 
+  push: 
+    branches: [ "CICDPipe" ]
+  pull-request: 
+    branches: [ "CICDPipe" ]
 
+
+jobs: 
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:  
+      matrix: 
+        node-version: [18.x, 20.x, 22.x, 23.x] 
+
+    steps:   
+    - uses: actions/checkout@v4
+
+    - name: SetUp NodeJS
+    - uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm''
+
+    - name: Install Dependencies and Test
+    - run: npm ci
+    - run: npm run test
