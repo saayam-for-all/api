@@ -1,5 +1,4 @@
-
-
+name: API CI Workflow
 on: 
   push: 
     branches: [ "test" ]
@@ -8,3 +7,20 @@ on:
 
 
 jobs: 
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:   
+    - name: Checkout Code
+    - uses: actions/checkout@v4
+
+    - name: SetUp NodeJS
+    - uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+
+    - name: Install Dependencies 
+      run: npm ci
+
+    - 
