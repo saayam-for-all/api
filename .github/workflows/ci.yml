@@ -26,8 +26,10 @@ jobs:
     - name: Install Dependencies and Test
       run: npm ci
       
-    - run: npm run lint
+    - run: npm run lint 
 
-    - run: npm test
-
-    - run: npm run build
+    - name: SonarQube Scan 
+      uses: sonarsource/sonarqube-scan-action@master
+      env: 
+       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+       SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
