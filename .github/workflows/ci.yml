@@ -27,3 +27,33 @@ jobs:
       run: npm ci
       
     - run: npm run lint 
+
+    - run: npm test
+
+    - name: SonarQube Scan 
+      uses: sonarsource/sonarqube-scan-action@master
+      env: 
+       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+    - name: Configure AWS
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ env.AWS_REGION }}
+
+    - name: Build and deploy Lambda
+      run:  |
+        npm run build
+        aws lambda update-function-code \
+          --function-name basic-api \
+          --zip-file fileb://function.zip
+    
+    - name: Update API Gateway
+      run: |
+        aws apigateway create-deployment \
+          --rest-api-id ${{ secrets.AWS_API_ID }} \
+          --stage-name prod
+
+       
