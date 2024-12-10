@@ -6,6 +6,7 @@
   "scripts": {
     "lint": "prettier --write .", 
     "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "cd server && zip -r ../function.zip ."
   },
   "keywords": [],
   "author": "",
