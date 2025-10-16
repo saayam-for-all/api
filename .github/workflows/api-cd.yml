@@ -1,0 +1,19 @@
+name: API CD
+
+on:
+  push:
+    branches: [test, dev, main]
+
+jobs:
+  deploy_stub:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install SAM CLI
+        run: pip install aws-sam-cli
+      - name: Build package
+        run: sam build --use-container
+      - name: Stub Deployment
+        run: |
+          echo "Skipping AWS deploy (no access)."
+          echo "Package ready for deploy to AWS via SAM."
