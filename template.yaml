@@ -1,0 +1,31 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: CI/CD deployment for Saayam API
+
+Globals:
+  Function:
+    Timeout: 10
+    Runtime: python3.10
+    MemorySize: 128
+    Architectures:
+      - x86_64
+
+Resources:
+  SaayamApiFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: saayam-api-function
+      Handler: app.lambda_handler  # change to your handler
+      CodeUri: .
+      Events:
+        ApiRoot:
+          Type: Api
+          Properties:
+            Path: /api
+            Method: ANY
+
+Outputs:
+  ApiEndpoint:
+    Description: "API Gateway endpoint"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/"
+
