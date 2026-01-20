@@ -3,7 +3,7 @@
 import axios from 'axios';
 import { Auth } from 'aws-amplify';
 
-const BASE_URL = 'https://ostyd1dqv7.execute-api.us-east-1.amazonaws.com/alpha/profile-picture';
+const BASE_URL = 'AWS_URL_HERE/profile-picture';
 
 async function getAuthHeaders() {
   const session = await Auth.currentSession();
