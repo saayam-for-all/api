@@ -5,6 +5,7 @@ on:
     branches: [ "CICDPipe" ]
   pull_request:
     branches: [ "CICDPipe" ]
+  workflow_dispatch:
 
 jobs:
   build:
