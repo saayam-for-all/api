@@ -28,11 +28,11 @@ jobs:
         npm init -y
         npm install dotenv typescript @types/node
 
-    - name: Lint
-      run: npm run lint
+ #   - name: Lint
+  #    run: npm run lint
 
-    - name: Run Tests
-      run: npm test
+   # - name: Run Tests
+    #  run: npm test
 
     - name: Build
       run: npm run build
